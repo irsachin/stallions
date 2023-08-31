@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import re_path
+from ckeditor_uploader import views as ckeditor_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
     path('',include('watch.urls'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

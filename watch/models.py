@@ -1,7 +1,32 @@
 from django.db import models
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 # Create your models here.
+
+#About us 
+
+
+class AboutUs(models.Model):
+    content = RichTextField()
+
+    def __str__(self):
+        return "About Us"
+
+
+
+
+# contact users
+class Contact(models.Model):
+    name=models.CharField(max_length=30)
+    lastname=models.CharField(max_length=30)
+    email=models.EmailField(max_length=30)
+    subject=models.CharField(max_length=10)
+    message=models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.name
+    # End contact users 
 
 class Customer(models.Model):
 	user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
